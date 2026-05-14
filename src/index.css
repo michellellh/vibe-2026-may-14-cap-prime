@@ -1,0 +1,78 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&family=Geist:wght@300;400;500;600&display=swap');
+
+@theme {
+  --color-surface: #0b1326;
+  --color-surface-dim: #0b1326;
+  --color-surface-bright: #31394d;
+  --color-surface-container-lowest: #060e20;
+  --color-surface-container-low: #131b2e;
+  --color-surface-container: #171f33;
+  --color-surface-container-high: #222a3d;
+  --color-surface-container-highest: #2d3449;
+  
+  --color-on-surface: #dae2fd;
+  --color-on-surface-variant: #c3c5d8;
+  
+  --color-outline: #8d90a2;
+  --color-outline-variant: #434656;
+  
+  --color-primary: #b7c4ff;
+  --color-on-primary: #002682;
+  --color-primary-container: #2e62ff;
+  --color-on-primary-container: #f7f6ff;
+  
+  --color-secondary: #b7c8e1;
+  --color-on-secondary: #213145;
+  --color-secondary-container: #3a4a5f;
+  --color-on-secondary-container: #a9bad3;
+  
+  --color-tertiary: #ffb599;
+  --color-on-tertiary: #5a1c00;
+  --color-tertiary-container: #c64700;
+  --color-on-tertiary-container: #fff5f2;
+  
+  --color-error: #ffb4ab;
+  --color-on-error: #690005;
+  --color-error-container: #93000a;
+  --color-on-error-container: #ffdad6;
+
+  --color-gain: #10b981;
+  --color-loss: #f43f5e;
+
+  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Hanken Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --radius-xs: 0.125rem;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+
+  --spacing-unit: 4px;
+}
+
+@layer base {
+  body {
+    @apply bg-surface text-on-surface font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight;
+  }
+}
+
+@layer utilities {
+  .font-data {
+    @apply font-mono tabular-nums;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}

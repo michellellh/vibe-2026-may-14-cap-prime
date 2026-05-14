@@ -1,0 +1,6 @@
+{
+  "name": "SGX Terminal",
+  "description": "Professional-grade financial terminal for SGX stocks. Featuring real-time market data, advanced screening, and portfolio analytics with a technical terminal aesthetic.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
