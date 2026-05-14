@@ -1,4 +1,4 @@
-export type Section = 'market' | 'screener' | 'watchlist' | 'portfolio' | 'stockDetail' | 'social';
+export type Section = 'market' | 'screener' | 'watchlist' | 'portfolio' | 'stockDetail' | 'social' | 'redeem';
 
 export interface UserStats {
   balance: number;
@@ -13,14 +13,14 @@ export interface Friend {
   name: string;
   avatar: string;
   level: number;
-  earnings: number;
+  earningsPercent: number;
   online: boolean;
 }
 
 export interface LeaderboardEntry {
   rank: number;
   name: string;
-  earnings: number;
+  earningsPercent: number;
   level: number;
   isUser?: boolean;
 }

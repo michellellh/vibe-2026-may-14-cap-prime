@@ -10,6 +10,8 @@ import ScreenerView from './components/ScreenerView';
 import PortfolioView from './components/PortfolioView';
 import CommunityView from './components/CommunityView'; // Keep for discussion
 import SocialView from './components/SocialView'; // New combined view
+import WatchlistView from './components/WatchlistView';
+import RedeemView from './components/RedeemView';
 import StockDetailView from './components/StockDetailView';
 import BottomNavBar from './components/BottomNavBar';
 import TopAppBar from './components/TopAppBar';
@@ -20,6 +22,15 @@ export default function App() {
   const [activeSection, setActiveSection] = useState<Section>('market');
   const [selectedTicker, setSelectedTicker] = useState<string | null>(null);
   const [stats, setStats] = useState<UserStats>(INITIAL_USER_STATS);
+  const [watchlist, setWatchlist] = useState<string[]>(['D05.SI', 'U11.SI', 'C6L.SI']);
+
+  const toggleWatchlist = useCallback((ticker: string) => {
+    setWatchlist(prev => 
+      prev.includes(ticker) 
+        ? prev.filter(t => t !== ticker) 
+        : [...prev, ticker]
+    );
+  }, []);
 
   const awardRewards = useCallback((xpAmount: number, coinAmount: number) => {
     setStats(prev => {
@@ -60,16 +71,22 @@ export default function App() {
         return <MarketView onStockClick={handleStockClick} />;
       case 'screener':
         return <ScreenerView onStockClick={handleStockClick} />;
+      case 'watchlist':
+        return <WatchlistView onStockClick={handleStockClick} watchlist={watchlist} />;
       case 'portfolio':
         return <PortfolioView onStockClick={handleStockClick} onConvert={convertCoinsToCash} stats={stats} />;
       case 'social':
         return <SocialView stats={stats} />;
+      case 'redeem':
+        return <RedeemView stats={stats} onConvert={convertCoinsToCash} />;
       case 'stockDetail':
         return (
           <StockDetailView 
             ticker={selectedTicker || 'D05.SI'} 
             onBack={() => setActiveSection('market')} 
             onTradeComplete={() => awardRewards(20, 5)}
+            isInWatchlist={watchlist.includes(selectedTicker || 'D05.SI')}
+            onToggleWatchlist={() => toggleWatchlist(selectedTicker || 'D05.SI')}
           />
         );
       default:
@@ -80,7 +97,7 @@ export default function App() {
   return (
     <div className="flex flex-col min-h-screen pb-20">
       <TopAppBar />
-      <UserStatusBar stats={stats} />
+      <UserStatusBar stats={stats} onCoinClick={() => setActiveSection('redeem')} />
       <main className="flex-grow">
         {renderView()}
       </main>

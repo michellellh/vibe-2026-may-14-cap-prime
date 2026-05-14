@@ -9,19 +9,19 @@ export const INITIAL_USER_STATS: UserStats = {
 };
 
 export const FRIENDS: Friend[] = [
-  { id: 'f1', name: 'Alvin T.', avatar: 'https://i.pravatar.cc/150?u=a', level: 12, earnings: 25400.50, online: true },
-  { id: 'f2', name: 'Sarah L.', avatar: 'https://i.pravatar.cc/150?u=s', level: 9, earnings: 18200.20, online: false },
-  { id: 'f3', name: 'Wei Ken', avatar: 'https://i.pravatar.cc/150?u=w', level: 15, earnings: 42100.00, online: true },
-  { id: 'f4', name: 'Mei Ling', avatar: 'https://i.pravatar.cc/150?u=m', level: 7, earnings: 9500.75, online: true },
+  { id: 'f1', name: 'Alvin T.', avatar: 'https://i.pravatar.cc/150?u=a', level: 12, earningsPercent: 18.5, online: true },
+  { id: 'f2', name: 'Sarah L.', avatar: 'https://i.pravatar.cc/150?u=s', level: 9, earningsPercent: 12.4, online: false },
+  { id: 'f3', name: 'Wei Ken', avatar: 'https://i.pravatar.cc/150?u=w', level: 15, earningsPercent: 32.1, online: true },
+  { id: 'f4', name: 'Mei Ling', avatar: 'https://i.pravatar.cc/150?u=m', level: 7, earningsPercent: 8.2, online: true },
 ];
 
 export const LEADERBOARD: LeaderboardEntry[] = [
-  { rank: 1, name: 'Wei Ken', earnings: 42100, level: 15 },
-  { rank: 2, name: 'Alvin T.', earnings: 25400, level: 12 },
-  { rank: 3, name: 'Sarah L.', earnings: 18200, level: 9 },
-  { rank: 4, name: 'You (Prime)', earnings: 14200, level: 8, isUser: true },
-  { rank: 5, name: 'Mei Ling', earnings: 9500, level: 7 },
-  { rank: 6, name: 'John Doe', earnings: 5200, level: 4 },
+  { rank: 1, name: 'Wei Ken', earningsPercent: 32.1, level: 15 },
+  { rank: 2, name: 'Alvin T.', earningsPercent: 18.5, level: 12 },
+  { rank: 3, name: 'Sarah L.', earningsPercent: 12.4, level: 9 },
+  { rank: 4, name: 'You (Prime)', earningsPercent: 11.04, level: 8, isUser: true },
+  { rank: 5, name: 'Mei Ling', earningsPercent: 8.2, level: 7 },
+  { rank: 6, name: 'John Doe', earningsPercent: 4.8, level: 4 },
 ];
 
 export const STOCKS: StockInfo[] = [

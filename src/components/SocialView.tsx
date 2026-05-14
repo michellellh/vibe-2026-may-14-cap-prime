@@ -68,7 +68,7 @@ export default function SocialView({ stats }: Props) {
           >
             <div className="bg-surface-container rounded-xl border border-outline-variant overflow-hidden">
               <div className="bg-surface-container-high px-4 py-3 border-b border-outline-variant flex justify-between items-center">
-                <span className="font-mono text-[10px] text-on-surface-variant font-bold uppercase tracking-widest">Global Earnings Leaderboard</span>
+                <span className="font-mono text-[10px] text-on-surface-variant font-bold uppercase tracking-widest">Global P/L % Leaderboard</span>
                 <span className="font-mono text-[9px] text-primary bg-primary/10 px-2 py-0.5 rounded-full font-bold">UPDATED LIVE</span>
               </div>
               <div className="divide-y divide-outline-variant/30">
@@ -94,9 +94,9 @@ export default function SocialView({ stats }: Props) {
                     </div>
                     <div className="text-right">
                       <div className="font-data text-gain font-bold tracking-tight">
-                        +${entry.earnings.toLocaleString()}
+                        +{entry.earningsPercent}%
                       </div>
-                      <div className="font-mono text-[8px] text-on-surface-variant font-bold uppercase">Total Profit</div>
+                      <div className="font-mono text-[8px] text-on-surface-variant font-bold uppercase">Total Return</div>
                     </div>
                   </div>
                 ))}
@@ -136,7 +136,7 @@ export default function SocialView({ stats }: Props) {
                   </div>
                 </div>
                 <div className="text-right flex flex-col items-end gap-1">
-                  <p className="font-data text-xs font-bold text-on-surface">+${friend.earnings.toLocaleString()}</p>
+                  <p className="font-data text-xs font-bold text-on-surface">+{friend.earningsPercent}%</p>
                   <button className="px-2 py-1 bg-surface-container-high border border-outline-variant rounded-md font-mono text-[8px] font-bold uppercase tracking-widest text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-all">VIEW STATS</button>
                 </div>
               </div>

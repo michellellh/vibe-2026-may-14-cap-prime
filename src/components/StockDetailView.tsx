@@ -1,3 +1,4 @@
+import React from 'react';
 import { ArrowLeft, Star, Landmark, ChevronRight, Fullscreen } from 'lucide-react';
 import { STOCKS, NEWS } from '../constants';
 import { motion } from 'motion/react';
@@ -6,9 +7,17 @@ interface Props {
   ticker: string;
   onBack: () => void;
   onTradeComplete?: () => void;
+  isInWatchlist?: boolean;
+  onToggleWatchlist?: () => void;
 }
 
-export default function StockDetailView({ ticker, onBack, onTradeComplete }: Props) {
+export default function StockDetailView({ 
+  ticker, 
+  onBack, 
+  onTradeComplete, 
+  isInWatchlist, 
+  onToggleWatchlist 
+}: Props) {
   const stock = STOCKS.find(s => s.ticker === ticker) || STOCKS[0];
 
   const handleTrade = () => {
@@ -17,6 +26,13 @@ export default function StockDetailView({ ticker, onBack, onTradeComplete }: Pro
       onTradeComplete();
     }
     alert(`Trade executed for ${stock.ticker}. You earned 20 XP and 5 Coins!`);
+  };
+
+  const handleToggleWatchlist = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (onToggleWatchlist) {
+      onToggleWatchlist();
+    }
   };
 
   return (
@@ -83,9 +99,18 @@ export default function StockDetailView({ ticker, onBack, onTradeComplete }: Pro
           </div>
 
           <div className="flex gap-3 mt-6">
-            <button className="flex-1 bg-surface-container-high border border-outline-variant text-on-surface h-12 flex items-center justify-center gap-2 hover:bg-surface-container-highest transition-all rounded-xl active:scale-95 group">
-              <Star className="w-4 h-4 text-on-surface-variant group-hover:text-primary transition-colors" />
-              <span className="font-mono text-[10px] font-bold uppercase tracking-widest">Watchlist</span>
+            <button 
+              onClick={handleToggleWatchlist}
+              className={`flex-1 h-12 flex items-center justify-center gap-2 border transition-all rounded-xl active:scale-95 group ${
+                isInWatchlist 
+                  ? 'bg-primary/10 border-primary text-primary shadow-[0_0_15px_rgba(183,196,255,0.1)]' 
+                  : 'bg-surface-container-high border-outline-variant text-on-surface hover:bg-surface-container-highest'
+              }`}
+            >
+              <Star className={`w-4 h-4 transition-colors ${isInWatchlist ? 'fill-primary' : 'text-on-surface-variant group-hover:text-primary'}`} />
+              <span className="font-mono text-[10px] font-bold uppercase tracking-widest">
+                {isInWatchlist ? 'In Watchlist' : 'Watchlist'}
+              </span>
             </button>
             <button 
               onClick={handleTrade}
