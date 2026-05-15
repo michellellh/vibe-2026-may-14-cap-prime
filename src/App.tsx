@@ -8,7 +8,6 @@ import { Section, UserStats } from './types';
 import MarketView from './components/MarketView';
 import ScreenerView from './components/ScreenerView';
 import PortfolioView from './components/PortfolioView';
-import CommunityView from './components/CommunityView'; // Keep for discussion
 import SocialView from './components/SocialView'; // New combined view
 import WatchlistView from './components/WatchlistView';
 import RedeemView from './components/RedeemView';
@@ -16,6 +15,8 @@ import StockDetailView from './components/StockDetailView';
 import BottomNavBar from './components/BottomNavBar';
 import TopAppBar from './components/TopAppBar';
 import UserStatusBar from './components/UserStatusBar';
+import GlobalChat from './components/GlobalChat';
+import { ThemeProvider } from './components/ThemeProvider';
 import { INITIAL_USER_STATS } from './constants';
 
 export default function App() {
@@ -95,19 +96,22 @@ export default function App() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen pb-20">
-      <TopAppBar />
-      <UserStatusBar stats={stats} onCoinClick={() => setActiveSection('redeem')} />
-      <main className="flex-grow">
-        {renderView()}
-      </main>
-      <BottomNavBar 
-        activeSection={activeSection} 
-        onSectionChange={(section) => {
-          setActiveSection(section);
-          if (section !== 'stockDetail') setSelectedTicker(null);
-        }} 
-      />
-    </div>
+    <ThemeProvider>
+      <div className="flex flex-col min-h-screen pb-20 bg-surface">
+        <TopAppBar />
+        <UserStatusBar stats={stats} onCoinClick={() => setActiveSection('redeem')} />
+        <main className="flex-grow">
+          {renderView()}
+        </main>
+        <GlobalChat />
+        <BottomNavBar 
+          activeSection={activeSection} 
+          onSectionChange={(section) => {
+            setActiveSection(section);
+            if (section !== 'stockDetail') setSelectedTicker(null);
+          }} 
+        />
+      </div>
+    </ThemeProvider>
   );
 }

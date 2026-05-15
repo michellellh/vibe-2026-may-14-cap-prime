@@ -13,31 +13,31 @@ export default function WatchlistView({ onStockClick, watchlist }: Props) {
   return (
     <div className="flex flex-col gap-6 px-4 pt-6 animate-in fade-in slide-in-from-right-4 duration-500 max-w-4xl mx-auto">
       <div className="flex justify-between items-center">
-        <div className="flex items-center gap-3">
-          <div className="p-2 bg-primary/10 rounded-lg border border-primary/20">
-            <Star className="w-5 h-5 text-primary fill-primary/20" />
+        <div className="flex items-center gap-4">
+          <div className="p-2.5 bg-primary/10 rounded-xl border border-primary/20">
+            <Star className="w-6 h-6 text-primary fill-primary/20" />
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-on-surface font-display tracking-tight">Market Watchlist</h2>
-            <p className="font-mono text-[10px] text-on-surface-variant font-bold uppercase tracking-widest">{watchlist.length} Stocks Tracked</p>
+            <h2 className="text-3xl font-bold text-on-surface font-display tracking-tight">Market Watchlist</h2>
+            <p className="font-mono text-xs text-on-surface-variant font-bold uppercase tracking-widest leading-none mt-1">{watchlist.length} Stocks Tracked</p>
           </div>
         </div>
-        <button className="flex items-center gap-2 px-3 py-2 bg-surface-container-high border border-outline-variant rounded-lg group hover:brightness-110 transition-all">
-          <Search className="w-4 h-4 text-on-surface-variant group-hover:text-primary transition-colors" />
-          <span className="font-mono text-[10px] font-bold uppercase tracking-widest">Search</span>
+        <button className="flex items-center gap-3 px-4 py-2.5 bg-surface-container-high border border-outline-variant rounded-xl group hover:brightness-110 transition-all">
+          <Search className="w-5 h-5 text-on-surface-variant group-hover:text-primary transition-colors" />
+          <span className="font-mono text-xs font-bold uppercase tracking-widest">Search</span>
         </button>
       </div>
 
       {watchlist.length === 0 ? (
-        <div className="bg-surface-container rounded-2xl p-12 border border-dashed border-outline-variant flex flex-col items-center justify-center text-center gap-4">
-          <div className="w-16 h-16 bg-surface-container-high rounded-full flex items-center justify-center">
-            <Eye className="w-8 h-8 text-outline-variant opacity-50" />
+        <div className="bg-surface-container rounded-3xl p-16 border-2 border-dashed border-outline-variant/50 flex flex-col items-center justify-center text-center gap-6 shadow-sm">
+          <div className="w-20 h-20 bg-surface-container-high rounded-full flex items-center justify-center shadow-inner">
+            <Eye className="w-10 h-10 text-outline-variant/70" />
           </div>
           <div>
-            <h3 className="text-lg font-bold text-on-surface font-display">Your list is empty</h3>
-            <p className="text-on-surface-variant text-sm mt-1 max-w-xs">Add stocks to your watchlist to track their real-time performance and receive alerts.</p>
+            <h3 className="text-2xl font-bold text-on-surface font-display">Your list is empty</h3>
+            <p className="text-on-surface-variant text-base mt-2 max-w-sm leading-relaxed">Add stocks to your watchlist to track their real-time performance and receive alerts.</p>
           </div>
-          <button className="mt-2 bg-primary-container text-on-primary-container px-6 py-2.5 rounded-xl font-mono text-[10px] font-bold uppercase tracking-widest hover:brightness-110 transition-all">
+          <button className="mt-4 bg-primary-container text-on-primary-container px-8 py-3.5 rounded-2xl font-mono text-xs font-black uppercase tracking-widest hover:brightness-110 transition-all active:scale-95 shadow-lg shadow-primary-container/20">
             Find Stocks
           </button>
         </div>
@@ -49,33 +49,33 @@ export default function WatchlistView({ onStockClick, watchlist }: Props) {
               key={stock.ticker}
               whileHover={{ x: 4 }}
               onClick={() => onStockClick(stock.ticker)}
-              className="bg-surface-container p-4 rounded-xl border border-outline-variant flex items-center justify-between hover:bg-surface-container-high transition-all cursor-pointer group"
+              className="bg-surface-container p-5 rounded-2xl border border-outline-variant flex items-center justify-between hover:bg-surface-container-high transition-all cursor-pointer group shadow-sm"
             >
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-surface-container-highest rounded-xl flex items-center justify-center border border-outline-variant group-hover:border-primary/30 transition-colors">
+              <div className="flex items-center gap-5">
+                <div className="w-14 h-14 bg-surface-container-highest rounded-2xl flex items-center justify-center border border-outline-variant group-hover:border-primary/50 transition-all">
                    <div className="flex flex-col items-center">
-                    <span className="font-data text-xs font-bold text-primary">{stock.ticker.split('.')[0]}</span>
+                    <span className="font-data text-sm font-black text-primary">{stock.ticker.split('.')[0]}</span>
                   </div>
                 </div>
                 <div>
-                  <h4 className="font-display font-bold text-on-surface">{stock.name}</h4>
-                  <p className="font-mono text-[10px] text-on-surface-variant font-bold uppercase tracking-tighter">{stock.sector}</p>
+                  <h4 className="font-display font-bold text-lg text-on-surface group-hover:text-primary transition-colors leading-tight">{stock.name}</h4>
+                  <p className="font-mono text-xs text-on-surface-variant font-black uppercase tracking-widest mt-1">{stock.sector}</p>
                 </div>
               </div>
 
-              <div className="flex items-center gap-6">
+              <div className="flex items-center gap-8">
                 <div className="text-right">
-                  <div className="font-data text-on-surface font-bold text-lg">{stock.price.toFixed(2)}</div>
-                  <div className={`font-mono text-[10px] font-bold flex items-center justify-end ${stock.changePercent >= 0 ? 'text-gain' : 'text-loss'}`}>
+                  <div className="font-data text-on-surface font-black text-xl tracking-tight leading-none mb-1">{stock.price.toFixed(2)}</div>
+                  <div className={`font-mono text-xs font-black flex items-center justify-end ${stock.changePercent >= 0 ? 'text-gain' : 'text-loss'}`}>
                     {stock.changePercent >= 0 ? '+' : ''}{stock.changePercent}%
                   </div>
                 </div>
-                <div className="h-10 w-px bg-outline-variant/30 hidden sm:block"></div>
+                <div className="h-12 w-px bg-outline-variant/30 hidden sm:block"></div>
                 <button 
-                  className="p-2 text-on-surface-variant hover:text-loss transition-colors opacity-0 group-hover:opacity-100 hidden sm:block"
+                  className="p-2.5 text-on-surface-variant hover:text-loss transition-all opacity-0 group-hover:opacity-100 hidden sm:block hover:bg-loss/10 rounded-lg"
                   onClick={(e) => { e.stopPropagation(); /* Logic handled via detail view for now */ }}
                 >
-                  <Trash2 className="w-4 h-4" />
+                  <Trash2 className="w-5 h-5" />
                 </button>
               </div>
             </motion.div>
@@ -85,23 +85,23 @@ export default function WatchlistView({ onStockClick, watchlist }: Props) {
 
       {/* Suggested Stocks for Watchlist */}
       {watchlist.length > 0 && (
-        <section className="space-y-4 mb-20">
-          <h3 className="font-mono text-[10px] text-on-surface-variant font-bold uppercase tracking-widest">Trending in SGX</h3>
-          <div className="overflow-x-auto pb-4 scrollbar-hide -mx-4 px-4 flex gap-3">
+        <section className="space-y-6 mb-20 pt-6">
+          <h3 className="font-mono text-xs text-on-surface-variant font-black uppercase tracking-[0.2em] px-1">Trending in SGX</h3>
+          <div className="overflow-x-auto pb-6 scrollbar-hide -mx-4 px-4 flex gap-4">
             {STOCKS.filter(s => !watchlist.includes(s.ticker)).slice(0, 3).map((stock) => (
               <div 
                 key={stock.ticker}
                 onClick={() => onStockClick(stock.ticker)}
-                className="min-w-[160px] bg-surface-container-low p-4 rounded-xl border border-outline-variant flex flex-col gap-2 hover:bg-surface-container transition-all cursor-pointer"
+                className="min-w-[190px] bg-surface-container-low p-5 rounded-2xl border border-outline-variant flex flex-col gap-3 hover:bg-surface-container hover:border-primary/30 transition-all cursor-pointer shadow-sm group"
               >
                 <div className="flex justify-between items-start">
-                  <span className="font-mono text-[10px] text-primary font-bold">{stock.ticker}</span>
-                  <div className={`font-data text-[10px] font-bold ${stock.changePercent >= 0 ? 'text-gain' : 'text-loss'}`}>
+                  <span className="font-mono text-xs text-primary font-black tracking-widest">{stock.ticker}</span>
+                  <div className={`font-data text-xs font-black ${stock.changePercent >= 0 ? 'text-gain' : 'text-loss'}`}>
                     {stock.changePercent >= 0 ? '+' : ''}{stock.changePercent}%
                   </div>
                 </div>
-                <div className="font-data text-on-surface font-bold text-lg">{stock.price}</div>
-                <button className="mt-1 w-full py-2 bg-surface-container-high border border-outline-variant rounded-lg font-mono text-[8px] font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-all">
+                <div className="font-data text-on-surface font-black text-xl leading-none mt-1">{stock.price.toFixed(2)}</div>
+                <button className="mt-2 w-full py-2.5 bg-surface-container-high border border-outline-variant rounded-xl font-mono text-[10px] font-black uppercase tracking-widest text-on-surface-variant group-hover:text-primary group-hover:border-primary/20 transition-all">
                   Quick Add
                 </button>
               </div>

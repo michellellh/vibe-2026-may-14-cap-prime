@@ -17,13 +17,13 @@ export default function UserStatusBar({ stats, onCoinClick }: Props) {
         {/* Enriched Level Graphic */}
         <div className="flex flex-col items-center">
           <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-container to-primary flex flex-col items-center justify-center text-on-primary-container shadow-lg shadow-primary/20 border border-primary/30">
-            <span className="font-mono text-[8px] font-black uppercase leading-none opacity-80 mb-0.5">Level</span>
-            <span className="font-display font-bold text-xl leading-none">{stats.level}</span>
+            <span className="font-mono text-[10px] font-black uppercase leading-none opacity-80 mb-0.5">Level</span>
+            <span className="font-display font-bold text-2xl leading-none">{stats.level}</span>
           </div>
         </div>
 
-        <div className="flex flex-col gap-1.5 min-w-[120px]">
-          <div className="flex justify-between items-end font-mono text-[10px] text-on-surface-variant font-bold uppercase tracking-tight">
+        <div className="flex flex-col gap-1.5 min-w-[140px]">
+          <div className="flex justify-between items-end font-mono text-xs text-on-surface-variant font-bold uppercase tracking-tight">
             <span>Progress</span>
             <span className="text-primary">{stats.xp} / {xpForNextLevel} XP</span>
           </div>
@@ -45,16 +45,16 @@ export default function UserStatusBar({ stats, onCoinClick }: Props) {
           onClick={onCoinClick}
           className="flex items-center gap-2 bg-surface-container-high hover:bg-surface-container-highest px-4 py-2 rounded-xl border border-outline-variant transition-all cursor-pointer group"
         >
-          <Coins className="w-4 h-4 text-tertiary group-hover:rotate-12 transition-transform" />
+          <Coins className="w-5 h-5 text-tertiary group-hover:rotate-12 transition-transform" />
           <div className="flex flex-col items-start leading-none">
-            <span className="font-data text-sm font-bold text-on-surface tabular-nums">{stats.coins}</span>
-            <span className="font-mono text-[8px] text-tertiary font-bold uppercase mt-0.5">Redeem</span>
+            <span className="font-data text-base font-bold text-on-surface tabular-nums">{stats.coins}</span>
+            <span className="font-mono text-[10px] text-tertiary font-bold uppercase mt-0.5 tracking-wider">Redeem</span>
           </div>
         </motion.button>
         
         <div className="hidden sm:flex items-center gap-2 bg-surface-container-high px-4 py-2 rounded-xl border border-outline-variant">
-          <Wallet className="w-4 h-4 text-primary" />
-          <span className="font-data text-sm font-bold text-on-surface tabular-nums">
+          <Wallet className="w-5 h-5 text-primary" />
+          <span className="font-data text-base font-bold text-on-surface tabular-nums">
             ${stats.balance.toLocaleString(undefined, { minimumFractionDigits: 2 })}
           </span>
         </div>

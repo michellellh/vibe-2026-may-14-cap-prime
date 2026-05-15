@@ -24,28 +24,28 @@ export default function RedeemView({ stats, onConvert }: Props) {
 
   return (
     <div className="flex flex-col gap-8 px-4 pt-8 animate-in fade-in slide-in-from-bottom-4 duration-500 max-w-2xl mx-auto">
-      <div className="text-center space-y-2">
-        <div className="inline-flex p-3 bg-tertiary/10 rounded-2xl border border-tertiary/20 mb-2">
-          <Coins className="w-8 h-8 text-tertiary" />
+      <div className="text-center space-y-3">
+        <div className="inline-flex p-4 bg-tertiary/10 rounded-2xl border border-tertiary/20 mb-2">
+          <Coins className="w-10 h-10 text-tertiary" />
         </div>
-        <h2 className="text-3xl font-bold text-on-surface font-display tracking-tight">Redeem Rewards</h2>
-        <p className="text-on-surface-variant text-sm max-w-md mx-auto">Convert your hard-earned Terminal Coins into trading capital. Every 100 coins yields $10.00 SGD.</p>
+        <h2 className="text-4xl font-bold text-on-surface font-display tracking-tight">Redeem Rewards</h2>
+        <p className="text-on-surface-variant text-base max-w-md mx-auto">Convert your hard-earned Terminal Coins into trading capital. Every 100 coins yields $10.00 SGD.</p>
       </div>
 
       {/* Stats Cards */}
       <div className="grid grid-cols-2 gap-4">
-        <div className="bg-surface-container-high p-5 rounded-2xl border border-outline-variant shadow-lg flex flex-col items-center">
-          <span className="font-mono text-[10px] text-on-surface-variant font-bold uppercase tracking-widest mb-1">Available Coins</span>
+        <div className="bg-surface-container-high p-6 rounded-2xl border border-outline-variant shadow-lg flex flex-col items-center">
+          <span className="font-mono text-xs text-on-surface-variant font-bold uppercase tracking-widest mb-2">Available Coins</span>
           <div className="flex items-center gap-2">
-            <Coins className="w-5 h-5 text-tertiary" />
-            <span className="font-data text-2xl font-bold text-on-surface">{stats.coins}</span>
+            <Coins className="w-6 h-6 text-tertiary" />
+            <span className="font-data text-3xl font-bold text-on-surface">{stats.coins}</span>
           </div>
         </div>
-        <div className="bg-surface-container-high p-5 rounded-2xl border border-outline-variant shadow-lg flex flex-col items-center">
-          <span className="font-mono text-[10px] text-on-surface-variant font-bold uppercase tracking-widest mb-1">Trading Balance</span>
+        <div className="bg-surface-container-high p-6 rounded-2xl border border-outline-variant shadow-lg flex flex-col items-center">
+          <span className="font-mono text-xs text-on-surface-variant font-bold uppercase tracking-widest mb-2">Trading Balance</span>
           <div className="flex items-center gap-2">
-            <Wallet className="w-5 h-5 text-primary" />
-            <span className="font-data text-2xl font-bold text-on-surface">
+            <Wallet className="w-6 h-6 text-primary" />
+            <span className="font-data text-3xl font-bold text-on-surface">
               ${stats.balance.toLocaleString(undefined, { maximumFractionDigits: 0 })}
             </span>
           </div>
@@ -56,14 +56,14 @@ export default function RedeemView({ stats, onConvert }: Props) {
         <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 blur-3xl"></div>
         
         <div className="space-y-6">
-          <label className="font-mono text-[11px] text-on-surface-variant font-bold uppercase tracking-widest block text-center">Select Redemption Amount</label>
+          <label className="font-mono text-xs text-on-surface-variant font-bold uppercase tracking-widest block text-center">Select Redemption Amount</label>
           
           <div className="flex justify-between items-center bg-surface-container-lowest p-2 rounded-2xl border border-outline-variant/30">
             {[100, 200, 500, 1000].map((val) => (
               <button
                 key={val}
                 onClick={() => setAmount(val)}
-                className={`flex-1 py-3 rounded-xl font-data text-sm font-bold transition-all ${
+                className={`flex-1 py-4 rounded-xl font-data text-base font-bold transition-all ${
                   amount === val 
                     ? 'bg-primary-container text-on-primary-container shadow-lg' 
                     : 'text-on-surface-variant hover:bg-surface-container-highest'
@@ -78,18 +78,18 @@ export default function RedeemView({ stats, onConvert }: Props) {
         <div className="flex items-center justify-center gap-6 py-6 border-y border-outline-variant/30">
           <div className="text-center">
              <div className="flex items-center gap-2 justify-center mb-1">
-                <Coins className="w-5 h-5 text-tertiary" />
-                <span className="font-data text-3xl font-bold text-on-surface">{amount}</span>
+                <Coins className="w-6 h-6 text-tertiary" />
+                <span className="font-data text-4xl font-bold text-on-surface">{amount}</span>
              </div>
-             <span className="font-mono text-[9px] text-on-surface-variant font-bold uppercase">Coins Spent</span>
+             <span className="font-mono text-[11px] text-on-surface-variant font-bold uppercase tracking-widest">Coins Spent</span>
           </div>
-          <ArrowRight className="w-6 h-6 text-outline-variant mt-[-16px]" />
+          <ArrowRight className="w-8 h-8 text-outline-variant mt-[-16px]" />
           <div className="text-center">
              <div className="flex items-center gap-2 justify-center mb-1">
-                <Wallet className="w-5 h-5 text-gain" />
-                <span className="font-data text-3xl font-bold text-gain">${cashValue.toFixed(2)}</span>
+                <Wallet className="w-6 h-6 text-gain" />
+                <span className="font-data text-4xl font-bold text-gain">${cashValue.toFixed(2)}</span>
              </div>
-             <span className="font-mono text-[9px] text-on-surface-variant font-bold uppercase">Cash Received</span>
+             <span className="font-mono text-[11px] text-on-surface-variant font-bold uppercase tracking-widest">Cash Received</span>
           </div>
         </div>
 
@@ -97,7 +97,7 @@ export default function RedeemView({ stats, onConvert }: Props) {
           <button 
             disabled={stats.coins < amount || success}
             onClick={handleRedeem}
-            className={`w-full py-5 rounded-2xl font-mono text-xs font-bold uppercase tracking-[0.2em] transition-all flex items-center justify-center gap-3 ${
+            className={`w-full py-6 rounded-2xl font-mono text-sm font-bold uppercase tracking-[0.25em] transition-all flex items-center justify-center gap-3 ${
               stats.coins < amount 
                 ? 'bg-surface-container-highest text-on-surface-variant cursor-not-allowed' 
                 : 'bg-primary-container text-on-primary-container hover:brightness-110 shadow-xl shadow-primary/20 active:scale-[0.98]'
@@ -121,11 +121,11 @@ export default function RedeemView({ stats, onConvert }: Props) {
         </div>
       </div>
 
-      <div className="bg-surface-container-low p-5 rounded-2xl border border-outline-variant flex items-start gap-4">
-        <Info className="w-5 h-5 text-primary shrink-0" />
-        <div className="space-y-1">
-          <h4 className="font-display font-bold text-sm text-on-surface">Redemption Rules</h4>
-          <ul className="text-on-surface-variant text-[11px] list-disc list-inside space-y-1 font-medium">
+      <div className="bg-surface-container-low p-6 rounded-2xl border border-outline-variant flex items-start gap-4">
+        <Info className="w-6 h-6 text-primary shrink-0" />
+        <div className="space-y-2">
+          <h4 className="font-display font-bold text-base text-on-surface">Redemption Rules</h4>
+          <ul className="text-on-surface-variant text-xs list-disc list-inside space-y-1.5 font-medium leading-relaxed">
             <li>Minimum redemption is 100 Coins.</li>
             <li>Redeemed cash is added instantly to your trading balance.</li>
             <li>Levels can be earned by completing trade cycles and social quests.</li>

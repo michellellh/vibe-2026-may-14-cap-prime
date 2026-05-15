@@ -26,12 +26,12 @@ export default function BottomNavBar({ activeSection, onSectionChange }: Props) 
           <button
             key={item.id}
             onClick={() => onSectionChange(item.id)}
-            className={`flex flex-col items-center justify-center transition-all relative py-1 px-4 rounded-full ${
+            className={`flex flex-col items-center justify-center transition-all relative py-2 px-6 rounded-full ${
               isActive ? 'bg-secondary-container text-on-secondary-container' : 'text-on-surface-variant hover:bg-surface-container-highest'
             }`}
           >
-            <Icon className={`w-5 h-5 mb-0.5 ${isActive ? 'fill-current' : ''}`} />
-            <span className="font-mono text-[10px] font-bold uppercase tracking-tight">{item.label}</span>
+            <Icon className={`w-6 h-6 mb-1 ${isActive ? 'fill-current' : ''}`} />
+            <span className="font-mono text-[11px] font-bold uppercase tracking-wide">{item.label}</span>
             {isActive && (
               <motion.div
                 layoutId="nav-pill"

@@ -25,59 +25,59 @@ export default function PortfolioView({ onStockClick, onConvert, stats }: Props)
       {/* Portfolio Summary Card */}
       <section className="bg-surface-container rounded-xl p-6 border border-outline-variant shadow-2xl relative overflow-hidden">
         <div className="absolute top-0 right-0 p-4 flex flex-col items-end gap-2">
-          <div className="bg-primary/20 text-primary px-3 py-1 rounded text-[10px] font-bold font-mono border border-primary/30 tracking-widest">LIVE</div>
+          <div className="bg-primary/20 text-primary px-3 py-1.5 rounded text-xs font-bold font-mono border border-primary/30 tracking-widest">LIVE</div>
           <motion.div 
             whileHover={{ scale: 1.05 }}
             onClick={handleConvert}
-            className="bg-tertiary-container/20 text-tertiary px-3 py-1.5 rounded-lg text-[10px] font-bold font-mono border border-tertiary/30 cursor-pointer flex items-center gap-2 hover:bg-tertiary-container/30 transition-all"
+            className="bg-tertiary-container/20 text-tertiary px-4 py-2 rounded-lg text-xs font-bold font-mono border border-tertiary/30 cursor-pointer flex items-center gap-2 hover:bg-tertiary-container/30 transition-all"
           >
-            <RefreshCw className="w-3 h-3" />
+            <RefreshCw className="w-4 h-4" />
             <span>CONVERT 100 🪙</span>
           </motion.div>
         </div>
         
         <div className="space-y-4 mb-8">
           <div>
-            <p className="font-mono text-[10px] text-on-surface-variant font-bold uppercase tracking-widest mb-1">Total Portfolio Value</p>
-            <h2 className="text-4xl font-bold text-on-surface tracking-tight font-display">SGD {stats.balance.toLocaleString(undefined, { minimumFractionDigits: 2 })}</h2>
+            <p className="font-mono text-xs text-on-surface-variant font-bold uppercase tracking-widest mb-1.5">Total Portfolio Value</p>
+            <h2 className="text-5xl font-bold text-on-surface tracking-tight font-display">SGD {stats.balance.toLocaleString(undefined, { minimumFractionDigits: 2 })}</h2>
           </div>
           
-          <div className="grid grid-cols-2 gap-4 pt-2">
+          <div className="grid grid-cols-2 gap-6 pt-2">
             <div className="space-y-1">
-              <p className="font-mono text-[9px] text-on-surface-variant font-bold uppercase tracking-wider">Today's P/L</p>
-              <p className="font-data text-gain font-bold">+$1,240.15 (+0.87%)</p>
+              <p className="font-mono text-[11px] text-on-surface-variant font-bold uppercase tracking-wider">Today's P/L</p>
+              <p className="font-data text-base text-gain font-bold">+$1,240.15 (+0.87%)</p>
             </div>
             <div className="space-y-1 border-l border-outline-variant pl-4">
-              <p className="font-mono text-[9px] text-on-surface-variant font-bold uppercase tracking-wider">Total P/L</p>
-              <p className="font-data text-gain font-bold">+${stats.totalEarnings.toLocaleString()} (+11.04%)</p>
+              <p className="font-mono text-[11px] text-on-surface-variant font-bold uppercase tracking-wider">Total P/L</p>
+              <p className="font-data text-base text-gain font-bold">+${stats.totalEarnings.toLocaleString()} (+11.04%)</p>
             </div>
           </div>
         </div>
 
         {/* Allocation Bar */}
-        <div className="space-y-2">
-          <div className="flex justify-between font-mono text-[9px] text-on-surface-variant font-bold uppercase tracking-widest">
+        <div className="space-y-3">
+          <div className="flex justify-between font-mono text-[11px] text-on-surface-variant font-bold uppercase tracking-widest leading-none">
             <span>Sector Allocation</span>
             <span>100% Deployed</span>
           </div>
-          <div className="h-2 w-full flex rounded-full overflow-hidden bg-surface-container-highest">
+          <div className="h-3 w-full flex rounded-full overflow-hidden bg-surface-container-highest border border-outline-variant/30">
             <div className="h-full bg-primary w-[40%]" title="REITS"></div>
             <div className="h-full bg-secondary w-[25%]" title="Finance"></div>
             <div className="h-full bg-tertiary w-[20%]" title="Industrial"></div>
             <div className="h-full bg-outline w-[15%]" title="Others"></div>
           </div>
-          <div className="flex flex-wrap gap-x-6 gap-y-2 mt-4">
+          <div className="flex flex-wrap gap-x-8 gap-y-3 mt-4">
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-primary"></div>
-              <span className="font-mono text-[10px] text-on-surface font-bold">REITS 40%</span>
+              <div className="w-2.5 h-2.5 rounded-full bg-primary"></div>
+              <span className="font-mono text-xs text-on-surface font-bold">REITS 40%</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-secondary"></div>
-              <span className="font-mono text-[10px] text-on-surface font-bold">FINANCE 25%</span>
+              <div className="w-2.5 h-2.5 rounded-full bg-secondary"></div>
+              <span className="font-mono text-xs text-on-surface font-bold">FINANCE 25%</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-tertiary"></div>
-              <span className="font-mono text-[10px] text-on-surface font-bold">IND 20%</span>
+              <div className="w-2.5 h-2.5 rounded-full bg-tertiary"></div>
+              <span className="font-mono text-xs text-on-surface font-bold">IND 20%</span>
             </div>
           </div>
         </div>
@@ -100,29 +100,29 @@ export default function PortfolioView({ onStockClick, onConvert, stats }: Props)
             >
               <div className="flex justify-between items-start mb-6">
                 <div>
-                  <h4 className="font-data text-primary font-bold text-lg leading-tight tracking-tight">{stock.ticker.split('.')[0]}</h4>
-                  <p className="text-[11px] text-on-surface-variant font-medium mt-0.5">{stock.name}</p>
+                  <h4 className="font-data text-primary font-bold text-xl leading-tight tracking-tight">{stock.ticker.split('.')[0]}</h4>
+                  <p className="text-xs text-on-surface-variant font-medium mt-0.5">{stock.name}</p>
                 </div>
                 <div className="text-right">
-                  <p className="font-data text-on-surface font-bold">{stock.price.toFixed(2)}</p>
-                  <p className={`font-mono text-[10px] font-bold ${stock.changePercent >= 0 ? 'text-gain' : 'text-loss'}`}>
+                  <p className="font-data text-on-surface text-lg font-bold">{stock.price.toFixed(2)}</p>
+                  <p className={`font-mono text-xs font-bold ${stock.changePercent >= 0 ? 'text-gain' : 'text-loss'}`}>
                     {stock.changePercent >= 0 ? '+' : '-'}{Math.abs(stock.changePercent)}%
                   </p>
                 </div>
               </div>
               <div className="pt-4 border-t border-outline-variant/30 flex justify-between items-end">
-                <div className="flex gap-4">
+                <div className="flex gap-6">
                   <div>
-                    <p className="font-mono text-[9px] text-on-surface-variant font-bold uppercase tracking-tighter">Qty</p>
-                    <p className="font-data text-xs font-bold text-on-surface">1,200</p>
+                    <p className="font-mono text-[11px] text-on-surface-variant font-bold uppercase tracking-tight">Qty</p>
+                    <p className="font-data text-sm font-bold text-on-surface">1,200</p>
                   </div>
                   <div>
-                    <p className="font-mono text-[9px] text-on-surface-variant font-bold uppercase tracking-tighter">Avg</p>
-                    <p className="font-data text-xs font-bold text-on-surface">31.20</p>
+                    <p className="font-mono text-[11px] text-on-surface-variant font-bold uppercase tracking-tight">Avg</p>
+                    <p className="font-data text-sm font-bold text-on-surface">31.20</p>
                   </div>
                 </div>
                 <div className="text-right">
-                   <p className="font-data text-gain font-bold text-md tracking-tight">+$4,344.00</p>
+                   <p className="font-data text-gain font-bold text-lg tracking-tight">+$4,344.00</p>
                 </div>
               </div>
             </motion.div>
@@ -131,12 +131,12 @@ export default function PortfolioView({ onStockClick, onConvert, stats }: Props)
       </section>
 
       {/* Market Sentiment Chart */}
-      <section className="bg-surface-container-low p-5 rounded-xl border border-outline-variant mb-10 overflow-hidden relative">
+      <section className="bg-surface-container-low p-6 rounded-xl border border-outline-variant mb-14 overflow-hidden relative">
         <div className="flex justify-between items-center mb-6">
-          <p className="font-mono text-[10px] text-on-surface-variant font-bold uppercase tracking-widest">Market Sentiment (STI)</p>
-          <TrendingUp className="text-primary w-4 h-4" />
+          <p className="font-mono text-xs text-on-surface-variant font-bold uppercase tracking-widest">Market Sentiment (STI)</p>
+          <TrendingUp className="text-primary w-5 h-5" />
         </div>
-        <div className="h-32 w-full relative">
+        <div className="h-40 w-full relative">
           <svg className="w-full h-full" viewBox="0 0 400 100" preserveAspectRatio="none">
             <defs>
               <linearGradient id="sentimentGradient" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -148,7 +148,7 @@ export default function PortfolioView({ onStockClick, onConvert, stats }: Props)
             <path d="M0,80 Q50,70 100,75 T200,40 T300,50 T400,20" fill="transparent" stroke="#b7c4ff" strokeWidth="2.5" />
           </svg>
         </div>
-        <div className="flex justify-between mt-3 font-mono text-[9px] text-on-surface-variant font-bold">
+        <div className="flex justify-between mt-4 font-mono text-xs text-on-surface-variant font-bold">
           <span>09:00</span>
           <span>12:00</span>
           <span>15:00</span>
